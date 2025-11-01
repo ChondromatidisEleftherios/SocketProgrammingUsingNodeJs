@@ -10,7 +10,6 @@ import * as net from "net";
 	const loopbackAddress = "127.0.0.1";
 	const msg = "Hello World! \n";
 	const server = net.createServer(writeToClient);
-	const meow = 10;
 	server.maxConnections = 1;
 
 	function writeToClient(socket) {
