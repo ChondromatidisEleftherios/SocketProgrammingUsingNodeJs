@@ -1,5 +1,6 @@
 //@ts-check
-("use strict");
+
+"use strict";
 
 
 import * as net from "net";
