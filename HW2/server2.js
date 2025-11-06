@@ -5,7 +5,7 @@
 import * as net from "net";
 
 (function main() {
-	const portNum = 2300;
+	const portNum = 2025;
 	const loopbackAddress = "127.0.0.1";
 	const msg = "Hello World! \n";
 	const server = net.createServer(writeToClient);

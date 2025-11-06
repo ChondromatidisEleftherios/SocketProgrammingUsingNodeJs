@@ -5,7 +5,11 @@
 import * as net from "net";
 
 (function main() {
-	const portNum = 2300;
+	const portNum = process.argv[2];
+	if (portNum === null || portNum === undefined) {
+		console.log("No Command Line Argument for Port Number given!!!");
+		return false;
+	}
 	const loopbackAddress = "127.0.0.1";
 	const client = net.createConnection({ port: portNum, host: loopbackAddress });
 	client.on("data", receiveServerMessage);

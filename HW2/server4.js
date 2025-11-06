@@ -5,8 +5,16 @@
 import * as net from "net";
 
 (function main() {
-	const portNum = 2300;
-	const loopbackAddress = "127.0.0.1";
+	const portNum = process.argv[2];
+	if (portNum === null || portNum === undefined) {
+		console.log("No Command Line Argument for Port Number given!!!");
+		return false;
+	}
+	const address = process.argv[3];
+	if (address === null || address === undefined) {
+		console.log("No Command Line Argument for Address given!!!");
+		return false;
+	}
 	const msg = "Hello World! \n";
 	const server = net.createServer(writeToClient);
 	server.maxConnections = 1;
@@ -18,7 +26,7 @@ import * as net from "net";
 		server.close(serverShutDown);
 	}
 
-	server.listen({ port: portNum, host: loopbackAddress }, portAndIpInfo(portNum, loopbackAddress));
+	server.listen({ port: portNum, host: address }, portAndIpInfo(portNum, address));
 
 	function serverShutDown() {
 		console.log("Server Shutting Down...");
@@ -28,8 +36,8 @@ import * as net from "net";
 		console.log(`Connection could not be made, error code: ${err}`);
 	}
 
-	function portAndIpInfo(portNum, loopbackAddress) {
-		console.log(`Server is Listening on port: ${portNum} and is connected to host: ${loopbackAddress}`);
+	function portAndIpInfo(portNum, address) {
+		console.log(`Server is Listening on port: ${portNum} and is connected to host: ${address}`);
 	}
 
 }());

@@ -5,7 +5,7 @@
 import * as net from "net";
 
 (function main() {
-	const portNum = 2300;
+	const portNum = 2025;
 	const loopbackAddress = "127.0.0.1";
 	const client = net.createConnection({ port: portNum, host: loopbackAddress });
 	client.on("data", receiveServerMessage);
